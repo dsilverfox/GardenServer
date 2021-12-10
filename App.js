@@ -4,6 +4,11 @@ const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
 
+app.use(Express.json());
+
+app.use('/user', controllers.usercontroller);
+app.use('/notes', controllers.daniellesNoteController);
+
 dbConnection.authenticate()
     .then(()=> dbConnection.sync())
     //.then(()=> dbConnection.sync())
@@ -23,4 +28,4 @@ app.use('/test', (req, res) => {
 })
 
 //Actual Routes
-app.use('/user', controllers.usercontroller);
+

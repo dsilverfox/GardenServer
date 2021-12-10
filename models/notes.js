@@ -22,6 +22,9 @@ const Note = db.define('note', {
         type:DataTypes.STRING,
         allowNull:false
     },
+    owner_id: {
+        type: DataTypes.INTEGER
+    }
 
 });
 
