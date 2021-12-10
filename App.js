@@ -18,9 +18,9 @@ dbConnection.authenticate()
 
 //test route - Verified
 
-// app.use('/test', (req, res) => {
-//     res.send("This is a message from the test endpoint of the Garden App Server's app.js")
-// })
+app.use('/test', (req, res) => {
+    res.send("This is a message from the test endpoint of the Garden App Server's app.js")
+})
 
 //Actual Routes
 app.use('/user', controllers.usercontroller);
