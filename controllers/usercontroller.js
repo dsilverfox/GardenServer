@@ -4,13 +4,18 @@ const { UserModel } = require("../models");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+// User test - Verified
+router.get('/test', (req, res) => {
+    res.send('You have reached the usercontroller!')
+});
+
 //User Register
 router.post("/register", async (req, res) => {
     let { email, password } = req.body.user;
     console.log(req.body.user);
     try {
         const User = await UserModel.create({
-            email,
+            email: email,
             password: bcrypt.hashSync(password, 13)
         });
         console.log(User)
@@ -20,7 +25,7 @@ router.post("/register", async (req, res) => {
         });
 
         res.status(201).json({
-            message: "User sccessfully registered",
+            message: "User successfully registered",
             user: User,
             sessionToken: token,
         });
