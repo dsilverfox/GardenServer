@@ -4,6 +4,7 @@ const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
 
+app.use(Express.json());
 dbConnection.authenticate()
     .then(()=> dbConnection.sync())
     //.then(()=> dbConnection.sync())
