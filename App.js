@@ -4,7 +4,9 @@ const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
 
+
 app.use(Express.json());
+app.use(require('./middleware/validate-jwt'));
 dbConnection.authenticate()
     .then(()=> dbConnection.sync())
     //.then(()=> dbConnection.sync())
