@@ -1,4 +1,6 @@
 module.exports = {
-    notesController: require("./notesController"),
-  
+
+    // notescontroller: require("./notescontroller"),
+    usercontroller: require("./usercontroller"),
+    daniellesNoteController:require('./daniellesNoteController')
 };
