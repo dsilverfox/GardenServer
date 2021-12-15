@@ -3,7 +3,9 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
-const headers =require('./headers')
+
+
+
 app.use(Express.json());
 app.use(require('./middleware/headers'));
 
