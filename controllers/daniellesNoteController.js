@@ -63,5 +63,37 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: err});
     }
 });
+router.post('/create', validateSession, (req,res) => {
+    const {title, datePlanted, waterSched, light, temp, noteBody, } = req.body.note;
+    console.log(req.user.id, title, datePlanted, waterSched, light, temp,noteBody, );
+    NotesModel.create({
+        title,
+        datePlanted,
+        waterSched,
+        light,
+        temp,
+        noteBody,
+        owner_id: req.user.id
+    })
+    .then(note => res.status(201).json(note))
+    .catch(err => res.status(500).json(err))
+})
+//delete note
+router.delete('/delete/:id', validateSession, async (req, res) => {
+    const owner_id = req.user.id;
+    const note_id = req.params.id;
+    try {
+        const query = {
+            where: {
+                id: note_id,
+                owner_id: owner_id
+            }
+        };
+    await NotesModel.destroy(query);
+    res.status(200).json({message: "Plant Note Removed"});
+    } catch (err) {
+        res.status(500).json({error:err});
+    }
+});
 
 module.exports= router
