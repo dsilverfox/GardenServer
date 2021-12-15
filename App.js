@@ -3,10 +3,12 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
-
-
+const headers =require('./headers')
 app.use(Express.json());
-app.use(require('./middleware/validate-jwt'));
+
+app.use('/user', controllers.usercontroller);
+app.use('/notes', controllers.daniellesNoteController);
+
 dbConnection.authenticate()
     .then(()=> dbConnection.sync())
     //.then(()=> dbConnection.sync())
@@ -27,3 +29,4 @@ app.use('/test', (req, res) => {
 
 //Actual Routes
 app.use('/user', controllers.usercontroller);
+
