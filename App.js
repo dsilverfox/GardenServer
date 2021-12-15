@@ -3,12 +3,14 @@ const Express = require("express");
 const app = Express();
 const dbConnection = require("./db");
 const controllers = require('./controllers')
-const headers =require('./headers')
+
+
+
 app.use(Express.json());
 app.use(require('./middleware/headers'));
 
 app.use('/user', controllers.usercontroller);
-app.use('/notes', controllers.daniellesNoteController);
+app.use('/notes', controllers.notesController);
 
 dbConnection.authenticate()
     .then(()=> dbConnection.sync())
@@ -28,6 +30,4 @@ app.use('/test', (req, res) => {
     res.send("This is a message from the test endpoint of the Garden App Server's app.js")
 })
 
-//Actual Routes
-app.use('/user', controllers.usercontroller);
 

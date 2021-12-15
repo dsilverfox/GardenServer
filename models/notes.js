@@ -28,4 +28,6 @@ const Note = db.define('note', {
 
 });
 
+
 module.exports = Note;
+
