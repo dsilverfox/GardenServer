@@ -20,7 +20,8 @@ const Note = db.define('note', {
     },
     noteBody:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+    
     },
     owner_id: {
         type: DataTypes.INTEGER
@@ -28,6 +29,4 @@ const Note = db.define('note', {
 
 });
 
-
 module.exports = Note;
-
